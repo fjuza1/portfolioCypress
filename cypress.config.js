@@ -23,10 +23,6 @@ module.exports = defineConfig({
     experimentalModifyObstructiveThirdPartyCode: true,
     experimentalCspAllowList: ["frame-src"],
   },
-  env: {
-    USER:'filip.juza@kdcsro.sk',
-    PASS:'Nvrm@mlu1.',
-  },
   experimentalStudio: true,
   viewportHeight: 720,
   viewportWidth: 1280,
