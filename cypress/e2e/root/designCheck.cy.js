@@ -28,7 +28,7 @@ describe('Start', () => {
                 expect(txt).to.not.be.empty;
                 expect(txt).to.not.be.null;
                 expect(txt).to.not.be.undefined;
-                cy.clickLinks();
+                cy.wrap(lis).click();
                 // shouldf be vsible
                 cy.get(text).should('exist').and('be.visible').and('not.have.class', 'section--hidden');
                 // expected hash
