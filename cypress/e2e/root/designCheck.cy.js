@@ -11,7 +11,8 @@ describe('Design', () => {
         cy.get('#Contact').as('contact');
         cy.get('a[data-navlink="Contact"]').as('contact')
     });
-    it('Clicks & Links', () => {
+    it('Clicks on nav', () => {
+        cy.visit('');
         cy.get('#navbarsExample03').as('navbar')
         cy.get('@navbar').find('li').as('navbarLinks')
         cy.get('@navbarLinks').should((lis) => {
@@ -53,5 +54,12 @@ describe('Design', () => {
                 log: false
             }).should('include', 'Export as:');
         });
+    });
+    it('Skills are correct',()=>{
+        cy.visit('');
+        cy.containsElementFromFile({filePath:'skills.json', type:'name'})
+    })
+    it('Toggling menus', () => {
+        cy.visit('');
     });
 });

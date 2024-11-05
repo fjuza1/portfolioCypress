@@ -15,6 +15,7 @@
 //
 const { TIMEOUT, WAIT_TIME, BASEFAKERURL} = require('./config.js');
 const { init, fakePerson} = require('../../src/model.js');
+Cypress.Commands.add('containsElementFromFile',(options)=>cy.fixture(options.filePath).each(polozka => cy.contains(polozka[options.type])).log('contains all elements from json file'))
 const _ = Cypress._;
 Cypress.Commands.add('fake', (url) => {
   cy.request(BASEFAKERURL + url).then(response => {
