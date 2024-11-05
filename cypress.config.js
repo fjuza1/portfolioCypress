@@ -1,11 +1,10 @@
 const { defineConfig } = require('cypress');
-const { SOVATESTURL,TIMEOUT, SUPPORT_FILE } = require('./cypress/support/config.js');
+const { SOVATESTURL,TIMEOUT } = require('./cypress/support/config.js');
 const prostredia = require('./prostredia.js');
 
 module.exports = defineConfig({
-  projectId: '3o13nv',
+  projectId: 'vo5xuz',
   e2e: {
-    supportFile: SUPPORT_FILE,
     baseUrl: SOVATESTURL,
     setupNodeEvents(on, config) {
       on('before:browser:launch', (browser = {}, launchOptions) => {
