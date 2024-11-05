@@ -1,5 +1,4 @@
 name: Cypress Tests
-
 on: [push]
 
 jobs:
@@ -16,17 +15,18 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./path/to/your/github/folder
+        working-directory: ./autoPortfolio
 
       - name: Start server
         run: npm start
-        working-directory: ./path/to/your/github/folder
+        working-directory: ./autoPortfolio
+        # Running in background so Cypress can start while server is running
+        background: true 
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: npm start
-          wait-on: 'http://localhost:3000' # Change port if necessary
+          wait-on: 'http://localhost:3000' # Adjust port if needed
           record: true
           parallel: true
         env:
