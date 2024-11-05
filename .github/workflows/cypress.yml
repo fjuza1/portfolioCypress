@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Use windows-latest for Windows environment
     strategy:
       fail-fast: false
       matrix:
@@ -21,7 +21,10 @@ jobs:
         run: npm install
 
       - name: Start server
-        run: nohup npm start
+        run: start /b npm start
+
+      - name: Wait for server to be ready
+        run: timeout /t 10
 
       - name: Cypress
         uses: actions/checkout@v4
@@ -33,7 +36,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          wait-on: 'http://localhost:1234' # Adjust port if needed
+          wait-on: 'http://localhost:1234' 
           record: true
           parallel: true
         env:
