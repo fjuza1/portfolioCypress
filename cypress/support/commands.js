@@ -13,9 +13,14 @@
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
 //
-const { TIMEOUT, WAIT_TIME, BASEFAKERURL} = require('./config.js');
+const { TIMEOUT, WAIT_TIME, BASEFAKERURL, links} = require('./config.js');
 const { init, fakePerson} = require('../../src/model.js');
 const _ = Cypress._;
+Cypress.Commands.add('clickLinks',()=>{
+  cy.get('#navbarsExample03').as('navbar')
+  cy.get('@navbar').find('li').as('navbarLinks')
+  cy.get(links).each(lis => cy.wrap(lis).click())
+})
 Cypress.Commands.add('fake', (url) => {
   cy.request(BASEFAKERURL + url).then(response => {
       if (response.status === 200) return response
