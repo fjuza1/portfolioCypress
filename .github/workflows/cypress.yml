@@ -20,8 +20,6 @@ jobs:
       - name: Start server
         run: npm start
         working-directory: ./autoPortfolio
-        # Running in background so Cypress can start while server is running
-        background: true 
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
