@@ -14,14 +14,21 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: fjuza1/autoPortfolio
+          ref: experimental
+          token: ${{secrets.GITHUB_TOKEN}}
 
       - name: Install dependencies
         run: npm install
-        working-directory: fjuza1/autoPortfolio
 
       - name: Start server
         run: npm start
-        working-directory: fjuza1/autoPortfolio
+
+      - name: Cypress
+        uses: actions/checkout@v4
+        with:
+          repository: fjuza1/portfolioCypress
+          ref: main
+          token: ${{secrets.GITHUB_TOKEN}}
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
