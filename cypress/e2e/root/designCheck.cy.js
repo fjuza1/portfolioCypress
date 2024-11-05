@@ -55,6 +55,7 @@ describe('Start', () => {
         });
     });
     it.only('libraries work',()=>{
+        cy.log(_)
         let obj = {
             name: "GeeksforGeeks",
             password: "gfg@1234",
