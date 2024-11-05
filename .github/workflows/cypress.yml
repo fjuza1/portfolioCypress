@@ -17,16 +17,16 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./autoPortfolio
+        working-directory: ../../autoPortfolio
 
       - name: Start server
         run: npm start
-        working-directory: ./autoPortfolio
+        working-directory: ../../autoPortfolio
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          wait-on: 'http://localhost:3000' # Adjust port if needed
+          wait-on: 'http://localhost:1234' # Adjust port if needed
           record: true
           parallel: true
         env:
