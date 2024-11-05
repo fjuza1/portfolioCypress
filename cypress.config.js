@@ -14,6 +14,7 @@ module.exports = defineConfig({
         }
         return launchOptions;
       });
+      on('window:before:load', (win)=> win._=Cypress._)
       config.env.configFile = prostredia;
       return config;
     },
