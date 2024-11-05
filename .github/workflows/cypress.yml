@@ -1,43 +1,33 @@
 name: Cypress Tests
 on: [push]
-
 jobs:
   cypress-run:
-    runs-on: windows-latest  # Use windows-latest for Windows environment
+    runs-on: ubuntu-latest
+    # Runs tests in parallel with matrix strategy https://docs.cypress.io/guides/guides/parallelization
+    # https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
+    # Also see warning here https://github.com/cypress-io/github-action#parallel
     strategy:
-      fail-fast: false
+      fail-fast: false # https://github.com/cypress-io/github-action/issues/48
       matrix:
         containers: [1]
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          repository: fjuza1/autoPortfolio
-          ref: experimental
-          token: ${{secrets.GITHUB_TOKEN}}
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Start server
-        run: |
-          Start-Process "npm" "start" -NoNewWindow
-          Start-Sleep -Seconds 10  # Wait for server to be ready (adjust the time if needed)
-
-      - name: Cypress
-        uses: actions/checkout@v4
-        with:
-          repository: fjuza1/portfolioCypress
-          ref: main
-          token: ${{secrets.GITHUB_TOKEN}}
-
       - name: Cypress run
+        # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
         uses: cypress-io/github-action@v6
         with:
-          wait-on: 'http://localhost:1234'  # Adjust port if needed
+          # Starts web server for E2E tests - replace with your own server invocation
+          # https://docs.cypress.io/guides/continuous-integration/introduction#Boot-your-server
+          start: npm start
+          wait-on: 'https://splendid-sunburst-2a1df8.netlify.app' # Waits for above
+          # Records to Cypress Cloud 
+          # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
           record: true
-          parallel: true
+          parallel: true # Runs test in parallel using settings above
         env:
+          # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
+          # in GitHub repo → Settings → Secrets → Actions
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # Creating a token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

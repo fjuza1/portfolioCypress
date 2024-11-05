@@ -1,4 +1,4 @@
-const SOVATESTURL = 'http://localhost:1234/';
+const SOVATESTURL = 'https://splendid-sunburst-2a1df8.netlify.app';
 const TIMEOUT = 30000;
 const WAIT_TIME = 1000;
 const BASEFAKERURL = 'https://fakerapi.it/api/v2';
