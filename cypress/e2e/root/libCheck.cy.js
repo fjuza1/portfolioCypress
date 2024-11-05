@@ -9,5 +9,6 @@ describe('libs', () => {
         // Using the _.omit() method 
         cy.log(_.omit(obj, ['name', 'username']));
         const formatedDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+        cy.log(formatedDate)
     });
 });
