@@ -3,7 +3,7 @@ const { SOVATESTURL,TIMEOUT } = require('./cypress/support/config.js');
 const prostredia = require('./prostredia.js');
 
 module.exports = defineConfig({
-  projectId: '64pvue',
+  projectId: '3o13nv',
   e2e: {
     baseUrl: SOVATESTURL,
     setupNodeEvents(on, config) {
