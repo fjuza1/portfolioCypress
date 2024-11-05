@@ -15,6 +15,9 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands';
+Cypress.on('window:before:load', (win) => {
+  win._ = Cypress._;
+});
 Cypress.on('uncaught:exception', (err, runnable) => {
   return false; 
 });
