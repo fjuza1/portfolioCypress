@@ -14,6 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
+const _ = Cypress._;
 import './commands';
 Cypress.on('uncaught:exception', (err, runnable) => {
   return false; 

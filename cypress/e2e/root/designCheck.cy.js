@@ -54,4 +54,14 @@ describe('Start', () => {
             }).should('include', 'Export as:');
         });
     });
+    it.only('libraries work',()=>{
+        let obj = {
+            name: "GeeksforGeeks",
+            password: "gfg@1234",
+            username: "your_geeks"
+        }
+        
+        // Using the _.omit() method 
+        console.log(_.omit(obj, ['name', 'username']));
+    })
 });
