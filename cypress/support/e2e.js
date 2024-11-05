@@ -15,6 +15,7 @@
 
 // Import commands.js using ES2015 syntax:
 import _ from 'lodash';
+import moment from 'moment';
 import './commands';
 Cypress.on('window:before:load', (win) => {
   win._ = Cypress._;
