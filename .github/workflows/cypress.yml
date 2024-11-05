@@ -10,27 +10,34 @@ jobs:
         containers: [1]
 
     steps:
-      - name: Checkout
+      # Step 1: Checkout the main repository
+      - name: Checkout autoPortfolio repository
         uses: actions/checkout@v4
         with:
           repository: fjuza1/autoPortfolio
           ref: experimental
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
+      # Step 2: Install dependencies in autoPortfolio
       - name: Install dependencies
         run: npm install
+        working-directory: ${{ github.workspace }}/autoPortfolio # specify directory if needed
 
+      # Step 3: Start server for autoPortfolio
       - name: Start server
         run: npm start
+        working-directory: ${{ github.workspace }}/autoPortfolio # specify directory if needed
 
-      - name: Cypress
+      # Step 4: Checkout the Cypress tests repository (portfolioCypress)
+      - name: Checkout portfolioCypress repository
         uses: actions/checkout@v4
         with:
           repository: fjuza1/portfolioCypress
           ref: main
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Cypress run
+      # Step 5: Run Cypress tests
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
           wait-on: 'http://localhost:1234' # Adjust port if needed
