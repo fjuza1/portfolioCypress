@@ -1,4 +1,4 @@
-describe('Start', () => {
+describe('Design', () => {
     before(() => {
         cy.visit('');
         cy.getHash('');
@@ -11,7 +11,7 @@ describe('Start', () => {
         cy.get('#Contact').as('contact');
         cy.get('a[data-navlink="Contact"]').as('contact')
     });
-    it('We can start', () => {
+    it('Clicks & Links', () => {
         cy.get('#navbarsExample03').as('navbar')
         cy.get('@navbar').find('li').as('navbarLinks')
         cy.get('@navbarLinks').should((lis) => {
@@ -54,15 +54,4 @@ describe('Start', () => {
             }).should('include', 'Export as:');
         });
     });
-    it.only('libraries work',()=>{
-        cy.log(_)
-        let obj = {
-            name: "GeeksforGeeks",
-            password: "gfg@1234",
-            username: "your_geeks"
-        }
-        
-        // Using the _.omit() method 
-        console.log(_.omit(obj, ['name', 'username']));
-    })
 });
