@@ -21,10 +21,9 @@ jobs:
         run: npm install
 
       - name: Start server
-        run: start /b npm start
-
-      - name: Wait for server to be ready
-        run: timeout /t 10
+        run: |
+          Start-Process "npm" "start" -NoNewWindow
+          Start-Sleep -Seconds 10  # Wait for server to be ready (adjust the time if needed)
 
       - name: Cypress
         uses: actions/checkout@v4
@@ -36,7 +35,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          wait-on: 'http://localhost:1234' 
+          wait-on: 'http://localhost:1234'  # Adjust port if needed
           record: true
           parallel: true
         env:
