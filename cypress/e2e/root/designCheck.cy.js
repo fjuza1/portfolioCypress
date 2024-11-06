@@ -1,15 +1,6 @@
 describe('Design', () => {
     before(() => {
-        cy.visit('');
-        cy.getHash('');
-        cy.get('#About').as('about');
-        cy.get('a[data-navlink="About"]').as('about_li')
-        cy.get('#Skills').as('skills');
-        cy.get('a[data-navlink="Skills"]').as('skills_li')
-        cy.get('#Projects').as('projects');
-        cy.get('a[data-navlink="Projects"]').as('projects')
-        cy.get('#Contact').as('contact');
-        cy.get('a[data-navlink="Contact"]').as('contact')
+        cy.getAll()
     });
     it('Clicks on nav', () => {
         cy.visit('');

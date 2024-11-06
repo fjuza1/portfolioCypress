@@ -16,6 +16,18 @@
 const { TIMEOUT, WAIT_TIME, BASEFAKERURL} = require('./config.js');
 const { init, fakePerson} = require('../../src/model.js');
 Cypress.Commands.add('containsElementFromFile',(options)=>cy.fixture(options.filePath).each(polozka => cy.contains(polozka[options.type])).log('contains all elements from json file'))
+Cypress.Commands.add('getAll',()=>{
+    cy.visit('');
+    cy.getHash('');
+    cy.get('#About').as('about');
+    cy.get('a[data-navlink="About"]').as('about_li')
+    cy.get('#Skills').as('skills');
+    cy.get('a[data-navlink="Skills"]').as('skills_li')
+    cy.get('#Projects').as('projects');
+    cy.get('a[data-navlink="Projects"]').as('projects')
+    cy.get('#Contact').as('contact');
+    cy.get('a[data-navlink="Contact"]').as('contact')
+})
 const _ = Cypress._;
 Cypress.Commands.add('fake', (url) => {
   cy.request(BASEFAKERURL + url).then(response => {
