@@ -1,4 +1,7 @@
 describe('libs', () => {
+    beforeEach( () => {
+        cy.getFakeData({text:true,person:false, user:true})
+    });
     it('Libraries are usable', () => {
         let obj = {
             name: "GeeksforGeeks",

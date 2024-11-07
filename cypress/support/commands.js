@@ -14,7 +14,7 @@
 //
 //
 import { TIMEOUT, WAIT_TIME, BASEFAKERURL}  from './config.js'
-import { init, fakePerson}  from '../../src/model.js'
+import { init, fakePerson, fakeUser}  from '../../src/model.js'
 Cypress.Commands.add('containsElementFromFile',(options)=>cy.fixture(options.filePath).each(polozka => cy.contains(polozka[options.type])).log('contains all elements from json file'))
 Cypress.Commands.add('getAll',()=>{
     cy.visit('');
@@ -50,6 +50,7 @@ Cypress.Commands.add('rareNum', function() {
   const rareNum = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
   cy.wrap(rareNum).as('num');
 });
+Cypress.Commands.add('getFakeData', (options) => init (options) )
 Cypress.Commands.add('getOsoba',()=>{
   fakePerson();
 })

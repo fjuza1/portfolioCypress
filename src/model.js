@@ -1,8 +1,9 @@
-import {randomArrFakeEntry} from './helpers.js';
-import {BASEFAKERURL, FAKEPERSONURL} from '../cypress/support/config.js'
+import {fetchData, randomArrFakeEntry} from './helpers.js';
+import {BASEFAKERURL, FAKEPERSONURL, FAKETEXTURL, FAKEUSER} from '../cypress/support/config.js'
 const data = {
 	texts: {},
 	persons: {},
+	user: {},
 }
 export const fakePerson = () => {
 	try {
@@ -14,10 +15,15 @@ export const fakePerson = () => {
 		throw err;
 	}
 }
-export const texts = function() {
+export const generatedTexts = () => {
 	fetchData(`${BASEFAKERURL}${FAKETEXTURL}`).then(text => {
 		data.texts = text.body.data.map(res => res.content)
 	})
+}
+export const fakeUser = () =>{
+	fetchData(`${BASEFAKERURL}${FAKEUSER}`).then(user => {
+        data.user = randomArrFakeEntry(user)
+    })
 }
 export const getDatumy = () => {
 	const dateStart = new Date();
@@ -33,12 +39,21 @@ export const getDatumy = () => {
 	cy.wrap(formattedDateStart).as('startDate');
 	cy.wrap(formattedDateEnd).as('endDate');
 }
-export const init = () => {
+export const init = (options) => {
 	try {
-		fakePerson();
-		texts();
-		companies();
+		const {person, text, user} = options;
+		// runningg
+		if(person && person === true ) fakePerson()
+		if(text && text === true) generatedTexts()
+		if(user && user === true) fakeUser()
 		cy.wrap(data).as('data')
+		Cypress.log({
+			displayName: 'fakeData',
+			message: data,
+			consoleProps() {
+				return data
+			}
+		})
 	} catch (err) {
 		throw err;
 	}
