@@ -13,8 +13,8 @@
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
 //
-const { TIMEOUT, WAIT_TIME, BASEFAKERURL} = require('./config.js');
-const { init, fakePerson} = require('../../src/model.js');
+import { TIMEOUT, WAIT_TIME, BASEFAKERURL}  from './config.js'
+import { init, fakePerson}  from '../../src/model.js'
 Cypress.Commands.add('containsElementFromFile',(options)=>cy.fixture(options.filePath).each(polozka => cy.contains(polozka[options.type])).log('contains all elements from json file'))
 Cypress.Commands.add('getAll',()=>{
     cy.visit('');
