@@ -1,5 +1,5 @@
 import {fetchData, randomArrFakeEntry} from './helpers.js';
-import {BASEFAKERURL, FAKEPERSONURL, FAKETEXTURL, FAKEUSER} from '../cypress/support/config.js'
+import {BASEFAKERURL, FAKEPERSONURL, FAKETEXTURL, FAKEUSER} from './config.js';
 const data = {
 	texts: {},
 	persons: {},

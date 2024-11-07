@@ -1,4 +1,4 @@
-import {FAKEDATANAME} from '../cypress/support/config.js';
+import {FAKEDATANAME} from './config.js';
 export const randomArrFakeEntry = (arr) =>{
 	const rand = Math.floor(Math.random() * arr.body.data.length)
 	return arr.body.data[rand]

@@ -14,7 +14,7 @@
 //
 //
 import { TIMEOUT, WAIT_TIME, BASEFAKERURL}  from './config.js'
-import { init, fakePerson, fakeUser}  from '../../src/model.js'
+import { init, fakePerson, fakeUser}  from './model.js';
 Cypress.Commands.add('containsElementFromFile',(options)=>cy.fixture(options.filePath).each(polozka => cy.contains(polozka[options.type])).log('contains all elements from json file'))
 Cypress.Commands.add('getAll',()=>{
     cy.visit('');
