@@ -6,13 +6,18 @@ class FormView extends View {
     }
     _aliasFormFieldNames(form){
         let name;
-        return this._extractFormFields(form).forEach(field => {
+        return this._extractFormFields(form).reverse().forEach(field => {
             const nameAttribute = field.getAttribute('name');
             const typeAttribute = field.getAttribute('type');
-            if(nameAttribute) name = nameAttribute;
-            else name = typeAttribute;
+            const valAttribute = field.getAttribute('value');
+            const isRadio = typeAttribute === 'radio';
+            if(isRadio) name = valAttribute
+            else if (nameAttribute && !isRadio) name = nameAttribute
+            else if(nameAttribute === 'name') name = nameAttribute
+            else if (typeAttribute && !isRadio) name = typeAttribute
             cy.get(field).as(this._normaliseName(name))
         });
+            console.log("🚀 ~ FormView ~ returnthis._extractFormFields ~ isRadio:", isRadio)
     }
     _extractFormData(form) {
         Object.fromEntries([... new FormData(form)])
