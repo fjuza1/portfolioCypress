@@ -16,7 +16,7 @@ describe('Design', () => {
     })
     it('Toggling menus', () => {
     });
-    it.only('filtering is ok', ()=>{
+    it('filtering is ok', ()=>{
         isFound();
     })
 });

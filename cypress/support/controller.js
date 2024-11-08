@@ -23,6 +23,7 @@ export const navClicking = () =>{
             cy.get(text).should('exist').and('be.visible').and('not.have.class', 'section--hidden');
             // expected hash
             cy.getHash(expectedHash)
+            cy.getHash(`#${txt.toLowerCase()}`)
         });
     });
 }
