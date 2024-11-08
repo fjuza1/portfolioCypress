@@ -28,7 +28,7 @@ export const navClicking = () =>{
 }
 export const filterActivitiesCheck = () =>{
             // filterActivitiesCheck
-            cy.get('@filterActivities').then((body) => {
+            cy.get('@formActivities').then((body) => {
                 const bodyText = body.text();
                 cy.wrap(bodyText, {
                     log: false

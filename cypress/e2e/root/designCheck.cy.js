@@ -6,14 +6,16 @@ describe('Design', () => {
     beforeEach(() => {
         cy.visit('');
     });
-    it.only('Clicks on nav', () => {
+    it('Clicks on nav', () => {
         navAssesment();
         navClicking();
         filterActivitiesCheck();
         exportActivitesCheck();
     });
-    it('Skills are correct', () => {
+    it.only('Skills are correct', () => {
+        cy.clickPCNav('Skills');
         skillsCheck();
+        cy.get('@formActivities').getFormFields()
     })
     it('Toggling menus', () => {
     });

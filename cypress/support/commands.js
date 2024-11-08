@@ -15,7 +15,9 @@
 //
 import { TIMEOUT, WAIT_TIME, BASEFAKERURL}  from './config.js'
 import { init, fakePerson, fakeUser}  from './model.js';
-Cypress.Commands.add('containsElementFromFile',(options)=>cy.fixture(options.filePath).each(polozka => cy.contains(polozka[options.type])).log('contains all elements from json file'))
+import formView from './Views/formView.js';
+Cypress.Commands.add('getFormFields',{prevSubject:true}, subject=> formView._aliasFormFieldNames(subject[0]));
+Cypress.Commands.add('containsElementFromFile', options => cy.fixture(options.filePath).each(polozka => cy.contains(polozka[options.type])).log('contains all elements from json file'))
 Cypress.Commands.add('getAll',()=>{
     cy.visit('');
     cy.getHash('');
@@ -23,7 +25,7 @@ Cypress.Commands.add('getAll',()=>{
     cy.get('a[data-navlink="About"]').as('about_li')
     cy.get('#Skills').as('skills');
     cy.get('a[data-navlink="Skills"]').as('skills_li');
-    cy.get('.filterActivities').as('filterActivities');
+    cy.get('.filterActivities').as('formActivities');
     cy.get('#Projects').as('projects');
     cy.get('a[data-navlink="Projects"]').as('projects');
     cy.get('#Contact').as('contact');
@@ -45,6 +47,8 @@ Cypress.Commands.add('fake', (url) => {
       }
   })
 });
+Cypress.Commands.add('clickPCNav', (nav) => cy.get(`a[data-navlink="${nav}"]:not(.dropdown-item)`).click());
+Cypress.Commands.add('clickMobileNav', {prevSubject: 'element'}, nav => cy.get(`a[data-navlink="${nav}"].dropdown-item`).click({force:true}))
 Cypress.Commands.add('getHash',(assertionVal)=>{
   cy.hash().as('hash');
   cy.get('@hash').should('eq', assertionVal);
