@@ -34,6 +34,7 @@ Cypress.Commands.add('getAll',()=>{
     cy.get('#navbarsExample03').as('navbar');
     cy.get('@navbar').find('li').as('navbarLinks');
     cy.get('#export').as('exportActivities');
+    cy.get('.mb-2.mb-sm-0.ms-auto.navbar-nav').find('a').as('aLinksNav')
 })
 Cypress.Commands.add('dataFound', part=> cy.get(part).children().should('not.have.class', 'alert alert-danger').log('Skills have been found'))
 const _ = Cypress._;

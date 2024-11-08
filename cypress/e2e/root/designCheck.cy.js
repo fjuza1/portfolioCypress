@@ -1,4 +1,4 @@
-import {skillsCheck, navAssesment, navClicking, filterActivitiesCheck, exportActivitesCheck, isFound} from '../../support/controller.js';
+import {skillsCheck, navAssesment, navClicking, filterActivitiesCheck, exportActivitesCheck, isFound, hoveringState} from '../../support/controller.js';
 describe('Design', () => {
     beforeEach(() => {
         cy.getAll()
@@ -14,6 +14,9 @@ describe('Design', () => {
         cy.clickPCNav('Skills');
         skillsCheck();
     })
+    it.only('nav hoverings', () => {
+        hoveringState();
+    });
     it('Toggling menus', () => {
     });
     it('filtering is ok', ()=>{
