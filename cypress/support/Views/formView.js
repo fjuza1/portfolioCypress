@@ -17,7 +17,6 @@ class FormView extends View {
             else if (typeAttribute && !isRadio) name = typeAttribute
             cy.get(field).as(this._normaliseName(name))
         });
-            console.log("🚀 ~ FormView ~ returnthis._extractFormFields ~ isRadio:", isRadio)
     }
     _extractFormData(form) {
         Object.fromEntries([... new FormData(form)])

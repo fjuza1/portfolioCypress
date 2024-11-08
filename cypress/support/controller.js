@@ -52,3 +52,12 @@ export const exportActivitesCheck = () =>{
         .and('include','Export');
     });
 }
+export const isFound = () => {
+    cy.get('@formActivities').getFormFields()
+    cy.get('.bi.bi-filter').click();
+    cy.get('@skillsContainer').first()
+    cy.dataFound('@skillsContainer')
+    cy.get('@NAME').type('t')
+    cy.wait(1000)
+    cy.dataFound('@skillsContainer')
+}

@@ -21,6 +21,7 @@ Cypress.Commands.add('containsElementFromFile', options => cy.fixture(options.fi
 Cypress.Commands.add('getAll',()=>{
     cy.visit('');
     cy.getHash('');
+    cy.get('#skillsContainer').as('skillsContainer')
     cy.get('#About').as('about');
     cy.get('a[data-navlink="About"]').as('about_li')
     cy.get('#Skills').as('skills');
@@ -34,6 +35,7 @@ Cypress.Commands.add('getAll',()=>{
     cy.get('@navbar').find('li').as('navbarLinks');
     cy.get('#export').as('exportActivities');
 })
+Cypress.Commands.add('dataFound', part=> cy.get(part).children().should('not.have.class', 'alert alert-danger').log('Skills have been found'))
 const _ = Cypress._;
 Cypress.Commands.add('fake', (url) => {
   cy.request(BASEFAKERURL + url).then(response => {

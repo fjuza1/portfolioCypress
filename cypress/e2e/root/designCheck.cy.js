@@ -1,9 +1,7 @@
-import {skillsCheck, navAssesment, navClicking, filterActivitiesCheck, exportActivitesCheck} from '../../support/controller.js';
+import {skillsCheck, navAssesment, navClicking, filterActivitiesCheck, exportActivitesCheck, isFound} from '../../support/controller.js';
 describe('Design', () => {
-    before(() => {
-        cy.getAll()
-    });
     beforeEach(() => {
+        cy.getAll()
         cy.visit('');
     });
     it('Clicks on nav', () => {
@@ -12,11 +10,13 @@ describe('Design', () => {
         filterActivitiesCheck();
         exportActivitesCheck();
     });
-    it.only('Skills are correct', () => {
+    it('Skills are correct', () => {
         cy.clickPCNav('Skills');
         skillsCheck();
-        cy.get('@formActivities').getFormFields()
     })
     it('Toggling menus', () => {
     });
+    it.only('filtering is ok', ()=>{
+        isFound();
+    })
 });
