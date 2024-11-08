@@ -14,7 +14,7 @@ describe('Design', () => {
         cy.clickPCNav('Skills');
         skillsCheck();
     })
-    it.only('nav hoverings', () => {
+    it('nav hoverings', () => {
         hoveringState();
     });
     it('Toggling menus', () => {

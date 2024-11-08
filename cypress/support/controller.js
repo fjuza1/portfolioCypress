@@ -65,7 +65,7 @@ export const isFound = () => {
     cy.dataFound('@skillsContainer')
 }
 export const hoveringState = () => {
-    cy.get('@aLinksNav').each((skill, i) => {
+    cy.get('@aLinksNav').each(skill => {
         cy.wrap(skill).invoke('css', 'opacity').then((initOpacity) => {
             cy.wrap(skill).trigger('mouseover');
             cy.wrap(skill).should('have.css', 'opacity', initOpacity);
