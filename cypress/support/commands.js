@@ -22,11 +22,15 @@ Cypress.Commands.add('getAll',()=>{
     cy.get('#About').as('about');
     cy.get('a[data-navlink="About"]').as('about_li')
     cy.get('#Skills').as('skills');
-    cy.get('a[data-navlink="Skills"]').as('skills_li')
+    cy.get('a[data-navlink="Skills"]').as('skills_li');
+    cy.get('.filterActivities').as('filterActivities');
     cy.get('#Projects').as('projects');
-    cy.get('a[data-navlink="Projects"]').as('projects')
+    cy.get('a[data-navlink="Projects"]').as('projects');
     cy.get('#Contact').as('contact');
     cy.get('a[data-navlink="Contact"]').as('contact')
+    cy.get('#navbarsExample03').as('navbar');
+    cy.get('@navbar').find('li').as('navbarLinks');
+    cy.get('#export').as('exportActivities');
 })
 const _ = Cypress._;
 Cypress.Commands.add('fake', (url) => {
