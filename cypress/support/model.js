@@ -1,5 +1,5 @@
 import {fetchData, randomArrFakeEntry} from './helpers.js';
-import {BASEFAKERURL, FAKEPERSONURL, FAKETEXTURL, FAKEUSER} from './config.js';
+const {BASEFAKERURL, FAKEPERSONURL, FAKETEXTURL, FAKEUSER} =  require('./config.js');
 const data = {
 	texts: {},
 	persons: {},

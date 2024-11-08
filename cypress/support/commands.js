@@ -13,7 +13,7 @@
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
 //
-import { TIMEOUT, WAIT_TIME, BASEFAKERURL}  from './config.js'
+const { TIMEOUT, WAIT_TIME, BASEFAKERURL}  = ('./config.js')
 import { init, fakePerson, fakeUser}  from './model.js';
 import formView from './Views/formView.js';
 Cypress.Commands.add('getFormFields',{prevSubject:true}, subject=> formView._aliasFormFieldNames(subject[0]));

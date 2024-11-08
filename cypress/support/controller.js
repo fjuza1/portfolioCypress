@@ -64,9 +64,11 @@ export const isFound = () => {
     cy.wait(1000)
     cy.dataFound('@skillsContainer')
 }
-export const hoveringState = () =>{
-    cy.get('@aLinksNav').each((skill,i) => {
-        cy.wrap(skill).trigger('mouseover');
-        cy.wrap(skill).should('have.css','opacity', '1')
+export const hoveringState = () => {
+    cy.get('@aLinksNav').each((skill, i) => {
+        cy.wrap(skill).invoke('css', 'opacity').then((initOpacity) => {
+            cy.wrap(skill).trigger('mouseover');
+            cy.wrap(skill).should('have.css', 'opacity', initOpacity);
+        });
     });
-}
+};
