@@ -13,8 +13,9 @@ export const navClicking = () =>{
         cy.wrap(lis).invoke('text').then((txt) => {
             const text = `#${txt.trim()}`
             // should nbot be visible
+            let expectedHash
             cy.get(text).should('exist').and('not.be.visible').and('have.class', 'section--hidden');
-            const expectedHash = `#${txt.trim().toLowerCase().replace(/ /g, '-')}`;
+            expectedHash = `#${txt.trim().toLowerCase().replace(/ /g, '-')}`;
             expect(txt).to.not.be.empty;
             expect(txt).to.not.be.null;
             expect(txt).to.not.be.undefined;
@@ -23,7 +24,8 @@ export const navClicking = () =>{
             cy.get(text).should('exist').and('be.visible').and('not.have.class', 'section--hidden');
             // expected hash
             cy.getHash(expectedHash)
-            cy.getHash(`#${txt.toLowerCase()}`)
+            expectedHash = `${txt.toLowerCase().replace(/ /g, '-')}`
+            cy.getHash(`#${txt.toLowerCase().replace(/ /g, '')}`)
         });
     });
 }
