@@ -1,4 +1,4 @@
 
-const LOGIN = 'https://login.microsoftonline.com/'
-const SOVAPOWERAPPS = 'https://kdcintranet.powerappsportals.com/'
+const LOGIN = ''
+const SOVAPOWERAPPS = ''
 module.exports = {LOGIN,SOVAPOWERAPPS}
