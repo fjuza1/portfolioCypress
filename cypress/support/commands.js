@@ -36,6 +36,14 @@ Cypress.Commands.add('getAll',()=>{
     cy.get('#export').as('exportActivities');
     cy.get('.mb-2.mb-sm-0.ms-auto.navbar-nav').find('a').as('aLinksNav')
 })
+Cypress.Commands.add('randomFixData',(url)=>{
+  cy.fixture(url).then(function (data){
+    const dataI = Math.floor(Math.random() * data.length);
+    const randomEntry = data[dataI];
+    console.log("🚀 ~ randomEntry:", randomEntry)
+    cy.wrap(randomEntry).as('randomData')
+  })
+})
 Cypress.Commands.add('dataFound', part=> cy.get(part).children().should('not.have.class', 'alert alert-danger').log('Skills have been found'))
 const _ = Cypress._;
 Cypress.Commands.add('fake', (url) => {
