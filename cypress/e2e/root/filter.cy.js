@@ -10,7 +10,7 @@ describe('Filtering data', () => {
             cy.get('@skill').then((skill)=>{
                 cy.get('@formActivities').find('#searchName').then(data => {
                     cy.wrap(data).type(skill?.name ?? cy.error('Error has occured.Please fix!'),{force:true})
-                    cy.get('@skillsContainer').children().should('have.length.greaterThan', 0)
+                    cy.get('@skillsContainer').wait(2000).children().should('have.length.greaterThan', 0)
                 })
             })
         })
