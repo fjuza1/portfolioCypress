@@ -1,7 +1,7 @@
 describe('Filtering data', () => {
     beforeEach(() => {
         cy.getAll()
-        cy.visit('');
+        cy.visit(Cypress.env('skillsUrl'));
     });
     it('Filtering skills - input field', () => {
         cy.randomFixData('skills.json');

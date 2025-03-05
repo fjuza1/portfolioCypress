@@ -1,9 +1,15 @@
 const { defineConfig } = require('cypress');
-const { SOVATESTURL,TIMEOUT } = require('./cypress/support/config.js');
-const prostredia = require('./prostredia.js');
+const { SOVATESTURL,TIMEOUT, SKILLSURL, PROJECTSURL, CONTACTURL, ABOUTURL, JOURNEYURL } = require('./cypress/support/config.js');
 
 module.exports = defineConfig({
   projectId: 'vo5xuz',
+  env:{
+    skillsUrl: SKILLSURL,
+    projectsUrl:PROJECTSURL,
+    contactUrl:CONTACTURL,
+    journeyUrl:JOURNEYURL,
+    aboutUrl:ABOUTURL
+  },
   e2e: {
     baseUrl: SOVATESTURL,
     setupNodeEvents(on, config) {
@@ -14,7 +20,6 @@ module.exports = defineConfig({
         }
         return launchOptions;
       });
-      config.env.configFile = prostredia;
       return config;
     },
     testIsolation: true,

@@ -24,7 +24,6 @@ Cypress.on('window:before:load', (win) => {
 Cypress.on('uncaught:exception', (err, runnable) => {
   return false; 
 });
-  // cypress/support/e2e.js or cypress/support/index.js
 
   
 // Alternatively you can use CommonJS syntax:
