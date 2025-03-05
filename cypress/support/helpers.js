@@ -1,3 +1,4 @@
+import {FAKEDATANAME} from './config.js'
 export const fetchData = (url, body = undefined, method, header = undefined) => {
 	let end;
 	let resTime

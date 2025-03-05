@@ -1,13 +1,16 @@
 describe('Sorting data', () => {
     beforeEach(() => {
-        cy.getAll()
-        cy.visit('');
+        cy.getAll();
+        cy.visit(Cypress.env('skillsUrl'));
     });
-    it('Sorting skills', () => {
+    it.only('Sorting skills', () => {
         // get SkillsData
         cy.randomFixData('skills.json');
                 
         //TODO sort by name asc
+        cy.randomFixData('skills.json');
+        cy.get('@filterCollapseBTN').scrollIntoView({easing:'linear',offset:{top:500}}).click();
+        cy.get('@sortButton').first().click();
         //TODO sort by name desc
 
         //TODO sort by level asc

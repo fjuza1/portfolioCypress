@@ -27,6 +27,9 @@ Cypress.Commands.add('getAll',()=>{
     cy.get('#Skills').as('skills');
     cy.get('a[data-navlink="Skills"]').as('skills_li');
     cy.get('.filterActivities').as('formActivities');
+    cy.get('.exportActivities').as('exportActivities');
+    cy.get('@exportActivities').get('button[type="submit"]').as('sortButton');
+    cy.get('.bi.bi-filter').closest('button').as('filterCollapseBTN')
     cy.get('#Projects').as('projects');
     cy.get('a[data-navlink="Projects"]').as('projects');
     cy.get('#Contact').as('contact');
