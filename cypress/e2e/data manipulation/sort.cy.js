@@ -28,6 +28,12 @@ describe('Sorting data', () => {
 
         //TODO sort by level asc
         //TODO sort by level desc
+
+        // TODO reseted data
+        /*
+        cy.get('@sortButton').first().click();
+        cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsReseted'))
+        */
     })
     it('Sorting filtered skills', () => {
         // get SkillsData
