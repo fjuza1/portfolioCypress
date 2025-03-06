@@ -47,6 +47,14 @@ Cypress.Commands.add('randomFixData',(url)=>{
     cy.wrap(randomEntry).as('randomData')
   })
 })
+Cypress.Commands.add('getSkillsTextArray',{prevSubject:'element'},(skills)=>{
+  cy.wrap(skills).first().find('.justify-content-between')
+  .then((names)=>{
+      const textArray = names.toArray()
+      .map(text => text.innerText.trim());
+      return textArray
+  })
+})
 Cypress.Commands.add('dataFound', part=> cy.get(part).children().should('not.have.class', 'alert alert-danger').log('Skills have been found'))
 const _ = Cypress._;
 Cypress.Commands.add('fake', (url) => {

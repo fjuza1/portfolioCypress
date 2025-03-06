@@ -8,7 +8,7 @@ module.exports = defineConfig({
     projectsUrl:PROJECTSURL,
     contactUrl:CONTACTURL,
     journeyUrl:JOURNEYURL,
-    aboutUrl:ABOUTURL
+    aboutUrl:ABOUTURL,
   },
   e2e: {
     baseUrl: SOVATESTURL,
