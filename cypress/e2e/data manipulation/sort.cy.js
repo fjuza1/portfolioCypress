@@ -12,11 +12,11 @@ describe('Sorting data', () => {
         // get SkillsData
         cy.randomFixData('skills.json');
                 
-        //TODO sort by name asc
+        //sort by name asc
         cy.randomFixData('skills.json');
         cy.get('@filterCollapseBTN').scrollIntoView({easing:'linear',offset:{top:500}}).click();
         // before was sorted by name asc
-        cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsInit'))
+        cy.getInitSkills();
         // after sorting by name asc
         cy.get('@sortButton').first().click();
         cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsSortedAsc'))
@@ -28,9 +28,9 @@ describe('Sorting data', () => {
             });
           });
         cy.get('@skillsContainer').scrollIntoView({easing:'linear'})
-        //TODO sort by name desc
+        //sort by name desc
           cy.get('@descBTN').click();
-          cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsInit'))
+        cy.getInitSkills();
           cy.get('@sortButton').first().click();
           cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsSortedDesc'))
                   // comparing sorted data from UI
@@ -39,10 +39,10 @@ describe('Sorting data', () => {
                 expect(skillsInit).to.not.deep.equal(skillsSortedAsc);
                 });
             });
-        //TODO sort by level asc
+        //sort by level asc
         cy.get('@ascBTN').click();
         cy.get('@levelBTN').click();
-        cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsInit'))
+        cy.getInitSkills();
         cy.get('@sortButton').first().click();
         cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsNameSortedDesc'))
         // comparing sorted data from UI
@@ -51,10 +51,10 @@ describe('Sorting data', () => {
             expect(skillsInit).to.not.deep.equal(skillsSortedAsc);
           });
         });
-        //TODO sort by level desc
+        //sort by level desc
         cy.get('@levelBTN').click();
         cy.get('@descBTN').click();
-        cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsInit'))
+        cy.getInitSkills();
         cy.get('@sortButton').first().click();
         cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsLevelSortedDesc'))
         cy.get('@skillsInit').then((skillsInit) => {
@@ -62,12 +62,16 @@ describe('Sorting data', () => {
               expect(skillsInit).to.not.deep.equal(skillsSortedAsc);
             });
           });
-        // TODO reseted data
+        // reseted data
+        cy.getInitSkills();
         cy.get('@resetButton').click();
-        /*
-        cy.get('@sortButton').first().click();
-        cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsReseted'))
-        */
+        cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsResetedSortedDesc'))
+        // comparing sorted data from UI
+        cy.get('@skillsInit').then((skillsInit) => {
+            cy.get('@skillsReseted').then((skillsSortedAsc) => {
+              expect(skillsInit).to.not.deep.equal(skillsSortedAsc);
+            });
+          });
     })
     it('Sorting filtered skills', () => {
         // get SkillsData

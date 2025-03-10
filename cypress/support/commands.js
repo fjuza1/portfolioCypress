@@ -40,6 +40,7 @@ Cypress.Commands.add('getSkillsTextArray',{prevSubject:'element'},(skills)=>{
       return textArray
   })
 })
+Cypress.Commands.add('getInitSkills', () => cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsInit')))
 Cypress.Commands.add('dataFound', part=> cy.get(part).children().should('not.have.class', 'alert alert-danger').log('Skills have been found'))
 const _ = Cypress._;
 Cypress.Commands.add('fake', (url) => {
