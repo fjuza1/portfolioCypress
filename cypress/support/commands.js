@@ -18,6 +18,10 @@ import { init, fakePerson, fakeUser}  from './model.js';
 import formView from './Views/formView.js';
 Cypress.Commands.add('getFormFields',{prevSubject:true}, subject=> formView._aliasFormFieldNames(subject[0]));
 Cypress.Commands.add('containsElementFromFile', options => cy.fixture(options.filePath).each(polozka => cy.contains(polozka[options.type])).log('contains all elements from json file'))
+Cypress.Commands.add('goSkills',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 83, force:true}));
+Cypress.Commands.add('goJourney',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 74, force:true}));
+Cypress.Commands.add('goProjects',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 80, force:true}));
+Cypress.Commands.add('goContact',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 67, force:true}));
 Cypress.Commands.add('getAll',()=>{
     cy.visit('');
     cy.getHash('');

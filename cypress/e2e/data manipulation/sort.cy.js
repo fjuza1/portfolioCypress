@@ -3,6 +3,7 @@ describe('Sorting data', () => {
         cy.getAll();
         cy.visit(Cypress.env('skillsUrl'));
         cy.get('@skillsContainer').getSkillsTextArray().then((prevSkills)=>cy.wrap(prevSkills).as('skillsOriginal'));
+        cy.goSkills();
     });
     it.only('Sorting skills', () => {
         // get SkillsData
