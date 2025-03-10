@@ -1,4 +1,7 @@
 describe('Sorting data', () => {
+    before(() => {
+        cy.fixture('skills.json').then(skills => cy.wrap(skills.map(skill => skill.name).slice(0,Cypress.env('results'))).as('skillsReseted'));
+    })
     beforeEach(() => {
         cy.getAll();
         cy.visit(Cypress.env('skillsUrl'));
@@ -26,11 +29,41 @@ describe('Sorting data', () => {
           });
         cy.get('@skillsContainer').scrollIntoView({easing:'linear'})
         //TODO sort by name desc
-
+          cy.get('@descBTN').click();
+          cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsInit'))
+          cy.get('@sortButton').first().click();
+          cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsSortedDesc'))
+                  // comparing sorted data from UI
+            cy.get('@skillsInit').then((skillsInit) => {
+                cy.get('@skillsSortedDesc').then((skillsSortedAsc) => {
+                expect(skillsInit).to.not.deep.equal(skillsSortedAsc);
+                });
+            });
         //TODO sort by level asc
+        cy.get('@ascBTN').click();
+        cy.get('@levelBTN').click();
+        cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsInit'))
+        cy.get('@sortButton').first().click();
+        cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsNameSortedDesc'))
+        // comparing sorted data from UI
+        cy.get('@skillsInit').then((skillsInit) => {
+          cy.get('@skillsNameSortedDesc').then((skillsSortedAsc) => {
+            expect(skillsInit).to.not.deep.equal(skillsSortedAsc);
+          });
+        });
         //TODO sort by level desc
-
+        cy.get('@levelBTN').click();
+        cy.get('@descBTN').click();
+        cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsInit'))
+        cy.get('@sortButton').first().click();
+        cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsLevelSortedDesc'))
+        cy.get('@skillsInit').then((skillsInit) => {
+            cy.get('@skillsLevelSortedDesc').then((skillsSortedAsc) => {
+              expect(skillsInit).to.not.deep.equal(skillsSortedAsc);
+            });
+          });
         // TODO reseted data
+        cy.get('@resetButton').click();
         /*
         cy.get('@sortButton').first().click();
         cy.get('@skillsContainer').getSkillsTextArray().then((skills)=>cy.wrap(skills).as('skillsReseted'))

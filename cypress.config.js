@@ -1,5 +1,5 @@
 const { defineConfig } = require('cypress');
-const { SOVATESTURL,TIMEOUT, SKILLSURL, PROJECTSURL, CONTACTURL, ABOUTURL, JOURNEYURL } = require('./cypress/support/config.js');
+const { SOVATESTURL,TIMEOUT, SKILLSURL, PROJECTSURL, CONTACTURL, ABOUTURL, JOURNEYURL, MIN_RES } = require('./cypress/support/config.js');
 
 module.exports = defineConfig({
   projectId: 'vo5xuz',
@@ -9,6 +9,8 @@ module.exports = defineConfig({
     contactUrl:CONTACTURL,
     journeyUrl:JOURNEYURL,
     aboutUrl:ABOUTURL,
+    results: MIN_RES,
+    timeout: TIMEOUT,
   },
   e2e: {
     baseUrl: SOVATESTURL,

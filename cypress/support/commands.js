@@ -33,8 +33,6 @@ Cypress.Commands.add('getAll',()=>{
     cy.get('a[data-navlink="Skills"]').as('skills_li');
     cy.get('.filterActivities').as('formActivities');
     cy.get('.exportActivities').as('exportActivities');
-    cy.get('@exportActivities').get('button[type="submit"]').as('sortButton');
-    cy.get('.bi.bi-filter').closest('button').as('filterCollapseBTN')
     cy.get('#Projects').as('projects');
     cy.get('a[data-navlink="Projects"]').as('projects');
     cy.get('#Contact').as('contact');
@@ -43,12 +41,19 @@ Cypress.Commands.add('getAll',()=>{
     cy.get('@navbar').find('li').as('navbarLinks');
     cy.get('#export').as('exportActivities');
     cy.get('.mb-2.mb-sm-0.ms-auto.navbar-nav').find('a').as('aLinksNav')
+
+    //buttons
+    cy.get('@exportActivities').get('button[type="submit"]').as('sortButton');
+    cy.get('@exportActivities').get('button[type="reset"]').as('resetButton');
+    cy.get('.bi.bi-filter').closest('button').as('filterCollapseBTN')
+    cy.get('#Descending').as('descBTN');
+    cy.get('#Ascending').as('ascBTN');
+    cy.get('#Level').as('levelBTN');
 })
 Cypress.Commands.add('randomFixData',(url)=>{
   cy.fixture(url).then(function (data){
     const dataI = Math.floor(Math.random() * data.length);
     const randomEntry = data[dataI];
-    console.log("🚀 ~ randomEntry:", randomEntry)
     cy.wrap(randomEntry).as('randomData')
   })
 })
