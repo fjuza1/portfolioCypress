@@ -23,7 +23,7 @@ describe('Sorting data', () => {
               expect(skillsInit).to.not.deep.equal(skillsSortedAsc);
             });
           });
-                   
+        cy.get('@skillsContainer').scrollIntoView({easing:'linear'})
         //TODO sort by name desc
 
         //TODO sort by level asc

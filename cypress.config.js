@@ -23,6 +23,7 @@ module.exports = defineConfig({
       return config;
     },
     testIsolation: true,
+    keystrokeDelay: 200,
     headless: true,
     chromeWebSecurity: true,
     experimentalModifyObstructiveThirdPartyCode: true,
