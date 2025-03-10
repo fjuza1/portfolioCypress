@@ -8,7 +8,7 @@ describe('Sorting data', () => {
         cy.get('@skillsContainer').getSkillsTextArray().then((prevSkills)=>cy.wrap(prevSkills).as('skillsOriginal'));
         cy.goSkills();
     });
-    it.only('Sorting skills', () => {
+    it('Sorting skills', () => {
         
                 
         //sort by name asc
@@ -72,17 +72,7 @@ describe('Sorting data', () => {
           });
     })
     it('Sorting filtered skills', () => {
-        
-
         //TODO filter skills search input, sort by name asc
-
-        //TODO filter skills search input, sort by name desc
-
-        //TODO filter skills search input, sort by level asc
-
-        //TODO filter skills search input, sort by level desc
-        
-        //TODO filter skills search dropdown, sort by name asc
 
         //TODO filter skills search dropdown, sort by name desc
     })

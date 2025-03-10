@@ -26,4 +26,16 @@ describe('Filtering data', () => {
             })
         })
     })
+    it.only('Filtering skills to non-existant skill',()=>{
+        cy.get('@filterCollapseBTN').scrollIntoView({easing:'linear',offset:{top:500}}).click();
+        cy.get('@filterLevelEl').select(1);
+        cy.get('@skillsContainer').should('be.visible')
+        .and('not.contain', 'No skills found. Please adjust your filter criteria.')
+        .and('contain', 'No skills were found! Please try again.')
+        /*
+        Error message will be changed 
+        .and('not.contain','No skills were found! Please try again.')
+        .and('contain', 'No skills found. Please adjust your filter criteria.')
+        */ 
+    });
 });

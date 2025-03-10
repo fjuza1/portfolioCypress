@@ -59,6 +59,7 @@ export const getNeededElements = () =>{
     cy.get('@navbar').find('li').as('navbarLinks');
     cy.get('#export').as('exportActivities');
     cy.get('.mb-2.mb-sm-0.ms-auto.navbar-nav').find('a').as('aLinksNav')
+	cy.get("[name='levelNumber']").as('filterLevelEl')
 
     //buttons
     cy.get('@exportActivities').get('button[type="submit"]').as('sortButton');
