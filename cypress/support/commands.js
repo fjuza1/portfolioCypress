@@ -22,6 +22,7 @@ Cypress.Commands.add('goSkills',()=>cy.get('body').trigger('keydown', { altKey:t
 Cypress.Commands.add('goJourney',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 74, force:true}));
 Cypress.Commands.add('goProjects',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 80, force:true}));
 Cypress.Commands.add('goContact',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 67, force:true}));
+Cypress.Commands.add('goHome',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 72, force:true}));
 Cypress.Commands.add('getAll',()=>{
     cy.visit('');
     cy.getHash('');
