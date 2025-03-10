@@ -1,6 +1,6 @@
 describe('Sorting data', () => {
     before(() => {
-        cy.fixture('skills.json').then(skills => cy.wrap(skills.map(skill => skill.name).slice(0,Cypress.env('results'))).as('skillsReseted'));
+        cy.getOriginalSkills();
     })
     beforeEach(() => {
         cy.getAll();
@@ -9,11 +9,9 @@ describe('Sorting data', () => {
         cy.goSkills();
     });
     it.only('Sorting skills', () => {
-        // get SkillsData
-        cy.randomFixData('skills.json');
+        
                 
         //sort by name asc
-        cy.randomFixData('skills.json');
         cy.get('@filterCollapseBTN').scrollIntoView({easing:'linear',offset:{top:500}}).click();
         // before was sorted by name asc
         cy.getInitSkills();
@@ -74,8 +72,7 @@ describe('Sorting data', () => {
           });
     })
     it('Sorting filtered skills', () => {
-        // get SkillsData
-        cy.randomFixData('skills.json');
+        
 
         //TODO filter skills search input, sort by name asc
 
