@@ -15,6 +15,7 @@
 //
 const { TIMEOUT, WAIT_TIME, BASEFAKERURL}  = ('./config.js')
 import { init, fakePerson, fakeUser}  from './model.js';
+import {getNeededElements} from './helpers.js';
 import formView from './Views/formView.js';
 Cypress.Commands.add('getFormFields',{prevSubject:true}, subject=> formView._aliasFormFieldNames(subject[0]));
 Cypress.Commands.add('containsElementFromFile', options => cy.fixture(options.filePath).each(polozka => cy.contains(polozka[options.type])).log('contains all elements from json file'))
@@ -23,33 +24,7 @@ Cypress.Commands.add('goJourney',()=>cy.get('body').trigger('keydown', { altKey:
 Cypress.Commands.add('goProjects',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 80, force:true}));
 Cypress.Commands.add('goContact',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 67, force:true}));
 Cypress.Commands.add('goHome',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 72, force:true}));
-Cypress.Commands.add('getAll',()=>{
-    cy.visit('');
-    cy.getHash('');
-    cy.get('#skillsContainer').as('skillsContainer')
-    cy.get('#About').as('about');
-    cy.get('a[data-navlink="About"]').as('about_li')
-    cy.get('#Skills').as('skills');
-    cy.get('a[data-navlink="Skills"]').as('skills_li');
-    cy.get('.filterActivities').as('formActivities');
-    cy.get('.exportActivities').as('exportActivities');
-    cy.get('#Projects').as('projects');
-    cy.get('a[data-navlink="Projects"]').as('projects');
-    cy.get('#Contact').as('contact');
-    cy.get('a[data-navlink="Contact"]').as('contact')
-    cy.get('#navbarsExample03').as('navbar');
-    cy.get('@navbar').find('li').as('navbarLinks');
-    cy.get('#export').as('exportActivities');
-    cy.get('.mb-2.mb-sm-0.ms-auto.navbar-nav').find('a').as('aLinksNav')
-
-    //buttons
-    cy.get('@exportActivities').get('button[type="submit"]').as('sortButton');
-    cy.get('@exportActivities').get('button[type="reset"]').as('resetButton');
-    cy.get('.bi.bi-filter').closest('button').as('filterCollapseBTN')
-    cy.get('#Descending').as('descBTN');
-    cy.get('#Ascending').as('ascBTN');
-    cy.get('#Level').as('levelBTN');
-})
+Cypress.Commands.add('getAll', getNeededElements)
 Cypress.Commands.add('randomFixData',(url)=>{
   cy.fixture(url).then(function (data){
     const dataI = Math.floor(Math.random() * data.length);
