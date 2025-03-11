@@ -24,9 +24,9 @@ Cypress.Commands.add('goJourney',()=>cy.get('body').trigger('keydown', { altKey:
 Cypress.Commands.add('goProjects',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 80, force:true}));
 Cypress.Commands.add('goContact',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 67, force:true}));
 Cypress.Commands.add('goHome',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 72, force:true}));
-Cypress.Commands.add('checkIfXML',() =>isXML);
+Cypress.Commands.add('checkIfXML',isXML);
 
-Cypress.Commands.add('checkIfCSV',() =>isCSV);
+Cypress.Commands.add('checkIfCSV',isCSV);
 Cypress.Commands.add('checkIfJSON',isJSON);
 
 Cypress.Commands.add('getOriginalSkills', () => cy.fixture('skills.json').then(skills => cy.wrap(skills.map(skill => skill.name).slice(0,Cypress.env('results'))).as('skillsReseted')));

@@ -73,26 +73,27 @@ export const getNeededElements = () =>{
     cy.get('#Level').as('levelBTN');
 };
 /**
- * Checks if is xml text
+ * Checks if a given string is a valid XML.
  *
- * @param {String} xml;
- * @return {boolean}
+ * @param {string} xml - The XML string to be validated.
+ * @returns {Promise<boolean>} A promise that resolves to true if the XML is valid, otherwise false.
  */
 export const isXML = async (xml) => {
     return new Promise((resolve) => {
         xml2js.parseString(xml, (err, result) => {
-            if (err) {
+            if (err || !result) {
                 resolve(false);
+            } else {
+                resolve(true);
             }
-            resolve(true);
         });
     });
 }
 /**
- * Checks if is CSV text
+ * Checks if the provided string is a valid CSV format.
  *
- * @param {String} csv;
- * @return {boolean}
+ * @param {string} csv - The CSV string to be validated.
+ * @returns {Promise<boolean>} A promise that resolves to true if the CSV is valid, otherwise false.
  */
 export const isCSV = (csv) => {
     return new Promise((resolve) => {
@@ -103,18 +104,27 @@ export const isCSV = (csv) => {
     });
 };
 /**
- * Checks if is JSON object
+ * Checks if the provided string is a valid JSON format.
  *
- * @param {Object<Array>} json;
- * @return {boolean}
+ * @param {string} json - The JSON string to be validated.
+ * @returns {Promise<boolean>} A promise that resolves to true if the JSON is valid, otherwise false.
+ *
+ * @example
+ * isJSON('{"name": "John", "age": 30}').then(result => {
+ *     console.log(result); // Output: true
+ * });
+ *
+ * isJSON('{"name": "John", "age": "thirty"}').then(result => {
+ *     console.log(result); // Output: false
+ * });
  */
 export const isJSON = (json) => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         try {
-        JSON.parse(json);
-        resolve(true)
+            JSON.parse(json);
+            resolve(true);
         } catch (err) {
-            resolve(false).as('json')
+            resolve(false);
         }
     });
 };
