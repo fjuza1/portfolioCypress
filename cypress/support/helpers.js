@@ -1,4 +1,5 @@
-import {FAKEDATANAME} from './config.js'
+import {FAKEDATANAME} from './config.js';
+import {xml2js, Papa} from './libs.js';
 export const fetchData = (url, body = undefined, method, header = undefined) => {
 	let end;
 	let resTime
@@ -68,4 +69,50 @@ export const getNeededElements = () =>{
     cy.get('#Descending').as('descBTN');
     cy.get('#Ascending').as('ascBTN');
     cy.get('#Level').as('levelBTN');
+};
+/**
+ * Checks if is xml text
+ *
+ * @param {String} xml;
+ * @return {boolean}
+ */
+export const isXML = async (xml) => {
+    return new Promise((resolve) => {
+        xml2js.parseString(xml, (err, result) => {
+            if (err) {
+                resolve(false);
+            }
+            resolve(true);
+        });
+    });
+}
+/**
+ * Checks if is CSV text
+ *
+ * @param {String} csv;
+ * @return {boolean}
+ */
+export const isCSV = (csv) => {
+    return new Promise((resolve) => {
+        Papa.parse(csv, {
+            complete: () => resolve(true),
+            error: () => resolve(false)
+        })
+    });
+};
+/**
+ * Checks if is JSON object
+ *
+ * @param {Object<Array>} json;
+ * @return {boolean}
+ */
+export const isJSON = (json) => {
+    return new Promise((resolve, reject) => {
+        try {
+        JSON.parse(json);
+        resolve(true)
+        } catch (err) {
+            reject(false)
+        }
+    });
 };

@@ -15,7 +15,7 @@
 //
 const { TIMEOUT, WAIT_TIME, BASEFAKERURL}  = ('./config.js')
 import { init, fakePerson, fakeUser}  from './model.js';
-import {getNeededElements} from './helpers.js';
+import {getNeededElements, isXML, isCSV, isJSON} from './helpers.js';
 import formView from './Views/formView.js';
 Cypress.Commands.add('getFormFields',{prevSubject:true}, subject=> formView._aliasFormFieldNames(subject[0]));
 Cypress.Commands.add('containsElementFromFile', options => cy.fixture(options.filePath).each(polozka => cy.contains(polozka[options.type])).log('contains all elements from json file'))
@@ -24,6 +24,10 @@ Cypress.Commands.add('goJourney',()=>cy.get('body').trigger('keydown', { altKey:
 Cypress.Commands.add('goProjects',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 80, force:true}));
 Cypress.Commands.add('goContact',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 67, force:true}));
 Cypress.Commands.add('goHome',()=>cy.get('body').trigger('keydown', { altKey:true,keyCode: 72, force:true}));
+Cypress.Commands.add('checkIfXML',() =>isXML);
+
+Cypress.Commands.add('checkIfCSV',() =>isCSV);
+Cypress.Commands.add('checkIfJSON',() =>isJSON);
 Cypress.Commands.add('getOriginalSkills', () => cy.fixture('skills.json').then(skills => cy.wrap(skills.map(skill => skill.name).slice(0,Cypress.env('results'))).as('skillsReseted')));
 Cypress.Commands.add('getAll', getNeededElements)
 Cypress.Commands.add('randomFixData',(url)=>{
