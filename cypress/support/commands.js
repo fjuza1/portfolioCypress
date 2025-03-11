@@ -27,7 +27,8 @@ Cypress.Commands.add('goHome',()=>cy.get('body').trigger('keydown', { altKey:tru
 Cypress.Commands.add('checkIfXML',() =>isXML);
 
 Cypress.Commands.add('checkIfCSV',() =>isCSV);
-Cypress.Commands.add('checkIfJSON',() =>isJSON);
+Cypress.Commands.add('checkIfJSON',isJSON);
+
 Cypress.Commands.add('getOriginalSkills', () => cy.fixture('skills.json').then(skills => cy.wrap(skills.map(skill => skill.name).slice(0,Cypress.env('results'))).as('skillsReseted')));
 Cypress.Commands.add('getAll', getNeededElements)
 Cypress.Commands.add('randomFixData',(url)=>{

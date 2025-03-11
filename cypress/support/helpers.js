@@ -61,8 +61,10 @@ export const getNeededElements = () =>{
     cy.get('#export').as('exportActivities');
     cy.get('.mb-2.mb-sm-0.ms-auto.navbar-nav').find('a').as('aLinksNav')
 	cy.get("[name='levelNumber']").as('filterLevelEl')
+    cy.get('[name="fileType"]').as('exportInps');
 
     //buttons
+    cy.get('[data-btn="export"]').as('exportButton');
     cy.get('@exportActivities').get('button[type="submit"]').as('sortButton');
     cy.get('@exportActivities').get('button[type="reset"]').as('resetButton');
     cy.get('.bi.bi-filter').closest('button').as('filterCollapseBTN')
@@ -112,7 +114,7 @@ export const isJSON = (json) => {
         JSON.parse(json);
         resolve(true)
         } catch (err) {
-            reject(false)
+            resolve(false).as('json')
         }
     });
 };
