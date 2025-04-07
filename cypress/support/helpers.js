@@ -42,6 +42,10 @@ export const fetchData = (url, body = undefined, method, header = undefined) => 
 		});
 	return fetchPro
 };
+export const randomArrFakeEntry = (arr) =>{
+	const rand = Math.floor(Math.random() * arr.body.data.length)
+	return arr.body.data[rand]
+}
 export const getNeededElements = () =>{
 	cy.visit('');
     cy.getHash('');

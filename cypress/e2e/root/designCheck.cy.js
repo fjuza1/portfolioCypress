@@ -4,7 +4,7 @@ describe('Design', () => {
         cy.getAll()
         cy.visit('');
     });
-    it.only('Clicks on nav', () => {
+    it('Clicks on nav', () => {
         navAssesment();
         navClicking();
         filterActivitiesCheck();
