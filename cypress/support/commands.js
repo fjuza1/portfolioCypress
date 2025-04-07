@@ -61,7 +61,7 @@ Cypress.Commands.add('fake', (url) => {
       }
   })
 });
-Cypress.Commands.add('clickPCNav', (nav) => cy.get(`a[data-navlink="${nav}"]:not(.dropdown-item)`).click());
+Cypress.Commands.add('clickPCNav', (nav) => cy.get(`[data-bs-target="#${nav.toLowerCase()}"]:not(.dropdown-item)`).click());
 Cypress.Commands.add('clickMobileNav', () => cy.get('@mobileNav').click({force:true}))
 Cypress.Commands.add('getHash',(assertionVal)=>{
   cy.hash().then(hash => {

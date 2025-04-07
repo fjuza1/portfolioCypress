@@ -4,14 +4,14 @@ describe('Design', () => {
         cy.getAll()
         cy.visit('');
     });
-    it.only('Clicks on nav', () => {
+    it('Clicks on nav', () => {
         navAssesment();
         filterActivitiesCheck();
         exportActivitesCheck();
         navClicking();
     });
-    it('Skills are correct', () => {
-        cy.clickPCNav('Skills');
+    it.only('Skills are correct', () => {
+        cy.clickPCNav('Personal');
         skillsCheck();
     })
     it('nav hoverings', () => {

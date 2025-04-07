@@ -63,7 +63,7 @@ export const getNeededElements = () =>{
     cy.get('#navbarsExample03').as('navbar');
     cy.get('[accesskey]').as('navbarLinks');
     cy.get('#export').as('exportActivities');
-    cy.get('.mb-2.mb-sm-0.ms-auto.navbar-nav').find('a').as('aLinksNav')
+    cy.get('.dropdown.nav-item').find('[data-bs-toggle="dropdown"]').as('aLinksNav')
 	cy.get("[name='levelNumber']").as('filterLevelEl')
     cy.get('[name="fileType"]').as('exportInps');
     //buttons
