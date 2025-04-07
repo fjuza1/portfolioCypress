@@ -57,12 +57,11 @@ export const getNeededElements = () =>{
     cy.get('#Contact').as('contact');
     cy.get('a[data-navlink="Contact"]').as('contact')
     cy.get('#navbarsExample03').as('navbar');
-    cy.get('@navbar').find('li').as('navbarLinks');
+    cy.get('[accesskey]').as('navbarLinks');
     cy.get('#export').as('exportActivities');
     cy.get('.mb-2.mb-sm-0.ms-auto.navbar-nav').find('a').as('aLinksNav')
 	cy.get("[name='levelNumber']").as('filterLevelEl')
     cy.get('[name="fileType"]').as('exportInps');
-
     //buttons
     cy.get('[data-btn="export"]').as('exportButton');
     cy.get('@exportActivities').get('button[type="submit"]').as('sortButton');
