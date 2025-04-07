@@ -22,6 +22,9 @@ export const navClicking = () =>{
             cy.wrap(lis).click({force:true});
             // // shouldf be vsible
             // cy.get(text).should('exist').and('be.visible').and('not.have.class', 'section--hidden');
+            //clicking mobile.
+            cy.viewport('iphone-6');
+            cy.clickMobileNav()
             // expected hash
             cy.getHash(expectedHash)
             expectedHash = `${txt.toLowerCase().replace(/ /g, '-')}`

@@ -74,6 +74,7 @@ export const getNeededElements = () =>{
     cy.get('#Descending').as('descBTN');
     cy.get('#Ascending').as('ascBTN');
     cy.get('#Level').as('levelBTN');
+    cy.get('[data-bs-target="#mobileDropdownMenu"]').as('mobileNav')
 };
 /**
  * Checks if a given string is a valid XML.
