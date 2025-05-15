@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^14.1.0",
+    "cypress": "^14.3.3",
     "cypress-fail-fast": "^7.1.1",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",
