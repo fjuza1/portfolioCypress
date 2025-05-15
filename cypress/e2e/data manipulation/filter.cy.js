@@ -1,3 +1,4 @@
+import {DATAADJUSTCRIT} from '../../support/config';
 describe('Filtering data', () => {
     beforeEach(() => {
         cy.getAll();
@@ -30,8 +31,8 @@ describe('Filtering data', () => {
         cy.get('@filterCollapseBTN').scrollIntoView({easing:'linear',offset:{top:500}}).click();
         cy.get('@filterLevelEl').select(1);
         cy.get('@skillsContainer').should('be.visible')
-        .and('not.contain', 'No skills found. Please adjust your filter criteria.')
-        .and('contain', 'No skills were found! Please try again.')
+        .and('not.contain', 'No skills found. Please try again.')
+        .and('contain', DATAADJUSTCRIT)
         /*
         Error message will be changed 
         .and('not.contain','No skills were found! Please try again.')
