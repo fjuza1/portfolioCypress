@@ -75,3 +75,23 @@ export const hoveringState = () => {
         });
     });
 };
+/**
+ * Toggles the visual mode between light and dark themes and asserts the changes.
+ *
+ * This function:
+ * 1. Asserts that the HTML element does not have the 'dark' class and has the 'light' class.
+ * 2. Clicks the theme toggle button to switch to dark mode.
+ * 3. Asserts that the HTML element now has the 'dark' class and does not have the 'light' class.
+ * 4. Clicks the theme toggle button again to switch back to light mode.
+ * 5. Asserts that the HTML element does not have the 'dark' class and has the 'light' class.
+ *
+ * @function visualMode
+ * @returns {void}
+ */
+export const visualMode  = () => {
+    cy.get('@html').should('not.have.class', 'dark').and('have.class', 'light');
+    cy.get('@themeBTN').click();
+    cy.get('@html').should('have.class', 'dark').and('not.have.class', 'light');
+    cy.get('@themeBTN').click();
+    cy.get('@html').should('not.have.class', 'dark').and('have.class', 'light');
+};

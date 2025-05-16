@@ -27,7 +27,7 @@ describe('Filtering data', () => {
             })
         })
     })
-    it.only('Filtering skills to non-existant skill',()=>{
+    it('Filtering skills to non-existant skill',()=>{
         cy.get('@filterCollapseBTN').scrollIntoView({easing:'linear',offset:{top:500}}).click();
         cy.get('@filterLevelEl').select(1);
         cy.get('@skillsContainer').should('be.visible')

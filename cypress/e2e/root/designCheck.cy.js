@@ -22,4 +22,7 @@ describe('Design', () => {
     it('filtering is ok', ()=>{
         isFound();
     })
+    it('DarkLightModeWorks', () => {
+        cy.checkLightDarkMode();
+    })
 });
