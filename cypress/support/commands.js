@@ -15,7 +15,8 @@
 //
 const { TIMEOUT, WAIT_TIME, BASEFAKERURL}  = ('./config.js')
 import { init, fakePerson, fakeUser}  from './model.js';
-import {getNeededElements, isXML, isCSV, isJSON, visualMode} from './helpers.js';
+import {getNeededElements, isXML, isCSV, isJSON} from './helpers.js';
+import {visualMode} from './controller.js';
 import formView from './Views/formView.js';
 Cypress.Commands.add('getFormFields',{prevSubject:true}, subject=> formView._aliasFormFieldNames(subject[0]));
 Cypress.Commands.add('containsElementFromFile', options => cy.fixture(options.filePath).each(polozka => cy.contains(polozka[options.type])).log('contains all elements from json file'))
@@ -82,7 +83,9 @@ Cypress.Commands.add('randOption', () => {
   const down = '{downarrow}'.repeat(randI);
   cy.wrap(down).as('option');
 });
-Cypress.Commands.add('checkLightDarkMode',visualMode)
+Cypress.Commands.add('checkLightDarkMode', () => {
+  visualMode(); // just call it
+});
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //

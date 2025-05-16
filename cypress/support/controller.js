@@ -89,9 +89,9 @@ export const hoveringState = () => {
  * @returns {void}
  */
 export const visualMode  = () => {
-    cy.get('@html').should('not.have.class', 'dark').and('have.class', 'light');
+    cy.get('@html').should('not.have.class', 'dark').and('not.have.class', 'light');
     cy.get('@themeBTN').click();
-    cy.get('@html').should('have.class', 'dark').and('not.have.class', 'light');
+    cy.get('@html').should('have.attr', 'data-bs-theme', 'dark')
     cy.get('@themeBTN').click();
-    cy.get('@html').should('not.have.class', 'dark').and('have.class', 'light');
-};
+    cy.get('@html').should('have.attr', 'data-bs-theme', 'light')
+}

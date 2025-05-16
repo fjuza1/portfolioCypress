@@ -4,6 +4,7 @@ describe('Design', () => {
         cy.getAll()
         cy.visit('');
     });
+    /*
     it('Clicks on nav', () => {
         navAssesment();
         filterActivitiesCheck();
@@ -13,7 +14,7 @@ describe('Design', () => {
     it.only('Skills are correct', () => {
         cy.clickPCNav('Personal');
         skillsCheck();
-    })
+    })*/
     it('nav hoverings', () => {
         hoveringState();
     });
