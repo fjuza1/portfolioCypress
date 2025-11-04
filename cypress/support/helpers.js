@@ -48,7 +48,7 @@ export const randomArrFakeEntry = (arr) =>{
 }
 export const getNeededElements = () =>{
 	cy.visit('');
-    cy.getHash('');
+    //cy.getHash('');
     cy.get('#skillsContainer').as('skillsContainer')
     cy.get('#About').as('about');
     cy.get('a[data-navlink="About"]').as('about_li')

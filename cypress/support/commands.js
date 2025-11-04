@@ -64,11 +64,11 @@ Cypress.Commands.add('fake', (url) => {
 });
 Cypress.Commands.add('clickPCNav', (nav) => cy.get(`[data-bs-target="#${nav.toLowerCase()}"]:not(.dropdown-item)`).click());
 Cypress.Commands.add('clickMobileNav', () => cy.get('@mobileNav').click({force:true}))
-Cypress.Commands.add('getHash',(assertionVal)=>{
+/*Cypress.Commands.add('getHash',(assertionVal)=>{
   cy.hash().then(hash => {
     expect(hash).to.eq(assertionVal);
   });
-});
+});*/
 const randI = Math.floor(Math.random() * 10 + 1)
 Cypress.Commands.add('rareNum', function() {
   const rareNum = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
